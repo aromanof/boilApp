@@ -1,0 +1,42 @@
+<!--<div *ngIf="loginService.processLoginFlag" class="card-content-loading">-->
+  <!--<mat-spinner class="spinner"></mat-spinner>-->
+<!--</div>-->
+
+<mat-card class="login-form">
+  <div class="login-form__logo"></div>
+  <h1 class="login-form__title" i18n="Форма логина|Заголовок">Аутентификация</h1>
+  <mat-card-content>
+    <form>
+      <mat-form-field>
+        <input matInput
+               [(ngModel)]="login"
+               [ngModelOptions]="{standalone: true}"
+               ngDefaultControl
+               type="email"
+               i18n-placeholder="Форма входа|Элемент ввода логина"
+               placeholder="Введите логин">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput
+               [(ngModel)]="password"
+               [ngModelOptions]="{standalone: true}"
+               ngDefaultControl
+               i18n-placeholder="Форма входа|Элемент ввода пароля"
+               type="password"
+               autocomplete="off"
+               placeholder="Введите пароль">
+      </mat-form-field>
+    </form>
+
+    <button mat-raised-button
+            class="text-uppercase"
+            ngClass="login-form__submit"
+            type="submit"
+            color="primary"
+            [disabled]="password == '' || login == ''"
+            (click)="processLogin(login, password)"
+            i18n="Кнопка для входа после ввода логина и пароля|">Войти
+    </button>
+  </mat-card-content>
+</mat-card>

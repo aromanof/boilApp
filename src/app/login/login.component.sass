@@ -1,0 +1,93 @@
+\:host
+  display: flex
+  width: 100%
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  height: 100vh
+
+.full-height
+  height: 100vh
+  display: flex
+  flex-direction: column
+  justify-content: center
+  text-align: center
+
+
+.card-content-loading
+  position: absolute
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+  z-index: 2
+
+.card-content-loading::before
+  content: ""
+  position: absolute
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+  background-color: rgba(0, 0, 0, .2)
+
+.spinner
+  position: absolute
+  top: 50%
+  left: 50%
+  margin-left: -50px
+  margin-top: -75px
+
+.login-form
+  width: 320px
+  text-align: center
+  box-sizing: border-box
+  @media (max-width: 480px)
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+  &__logo
+    display: block
+    height: 64px
+    width: 64px
+    margin: auto
+    margin-top: -32px !important // to rewrite material style
+    background: url('../../assets/images/boiler.png')
+    background-size: contain
+  &__title
+    margin: 20px 0
+    font-weight: lighter
+  &__forget
+    float: right
+    text-decoration: none
+    margin-bottom: 50px
+    font-size: 12px
+    color: #2F80ED
+    &:visited
+      color: #2F80ED
+  &__submit
+    width: 100%
+    text-transform: uppercase
+
+mat-form-field
+  width: 100%
+
+.credits
+  z-index: 1000
+  font-size: x-small
+  color: #bbbbbb
+
+.activity-login
+  text-align: left
+  cursor: default
+
+  .login-title
+    font-size: 13px
+    color: #adadad
+    margin-bottom: 2px
+
+  .logged-user
+    color: #c5c5c5
+    border-bottom: 1px solid
+    font-weight: 300
