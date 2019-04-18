@@ -5,6 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AlertService} from './shared/services/alert.service';
+import {NotifierModule} from 'angular-notifier';
+import {SimpleNotificationsModule} from "angular2-notifications";
+import {MaterialModule} from "./shared/modules/material/material.module";
+import {AuthGuard} from "./shared/services/auth-guard.service";
 
 @NgModule({
   declarations: [
@@ -14,9 +19,15 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule,
+    NotifierModule,
+    SimpleNotificationsModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+      AlertService,
+      AuthGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
