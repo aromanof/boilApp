@@ -1,9 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector   : 'app-header-desktop',
-  templateUrl: './header-desktop.component.html',
-  styleUrls  : [ './header-desktop.component.sass' ],
+  selector   : 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls  : [ './header.component.sass' ],
 })
 export class HeaderComponent implements OnInit {
   @Output() public logOut: EventEmitter<any> = new EventEmitter();
