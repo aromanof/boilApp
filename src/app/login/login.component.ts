@@ -39,4 +39,11 @@ export class LoginComponent implements OnInit {
         error => console.log(error),
     );
   }
+
+  public processRegistration(login: string, password: string): void {
+    this.apiService.registerUser(login, password).subscribe(
+        res => console.log(res),
+        error => console.log(error),
+    );
+  }
 }

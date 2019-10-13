@@ -23,6 +23,10 @@ export class ApiService {
   }
 
   public checkLogin(login: string, password: string): Observable<any> {
-    return this.http.post<any>('http://localhost:8000/login', {login, password}, this.httpOptions);
+    return this.http.post<any>('http://localhost:8000/user/login', {login, password}, this.httpOptions);
+  }
+
+  public registerUser(login: string, password: string): Observable<any> {
+    return this.http.post<any>('http://localhost:8000/user/create', {login, password}, this.httpOptions);
   }
 }

@@ -38,5 +38,15 @@
             (click)="processLogin(login, password)"
             i18n="Кнопка для входа после ввода логина и пароля|">Войти
     </button>
+
+    <button mat-raised-button
+            class="text-uppercase"
+            ngClass="login-form__submit"
+            type="submit"
+            color="primary"
+            [disabled]="password == '' || login == ''"
+            (click)="processRegistration(login, password)"
+            i18n="Кнопка для входа после ввода логина и пароля|">Зарегистрироваться
+    </button>
   </mat-card-content>
 </mat-card>
