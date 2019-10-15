@@ -8,11 +8,10 @@
   </div>
   <h1 class="login-form__title" i18n="Форма логина|Заголовок">Аутентификация</h1>
   <mat-card-content>
-    <form>
+    <form [formGroup]="loginForm">
       <mat-form-field>
         <input matInput
-               [(ngModel)]="login"
-               [ngModelOptions]="{standalone: true}"
+               formControlName="login"
                ngDefaultControl
                type="email"
                placeholder="Введите логин">
@@ -20,8 +19,7 @@
 
       <mat-form-field>
         <input matInput
-               [(ngModel)]="password"
-               [ngModelOptions]="{standalone: true}"
+               formControlName="password"
                ngDefaultControl
                type="password"
                autocomplete="off"
@@ -34,18 +32,20 @@
             ngClass="login-form__submit"
             type="submit"
             color="primary"
-            [disabled]="password == '' || login == ''"
-            (click)="processLogin(login, password)"
+            [disabled]="loginForm.invalid"
+            (click)="processLogin()"
             i18n="Кнопка для входа после ввода логина и пароля|">Войти
     </button>
+
+    <hr>
 
     <button mat-raised-button
             class="text-uppercase"
             ngClass="login-form__submit"
             type="submit"
             color="primary"
-            [disabled]="password == '' || login == ''"
-            (click)="processRegistration(login, password)"
+            [disabled]="loginForm.invalid"
+            (click)="processRegistration()"
             i18n="Кнопка для входа после ввода логина и пароля|">Зарегистрироваться
     </button>
   </mat-card-content>

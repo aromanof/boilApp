@@ -19,6 +19,7 @@ export class AlertService implements ErrorHandler {
    * @returns {null}
    */
   handleError = (error: any) => {
+    console.log(error);
     this.notifier.notify('error', `Ошибка! ${error.message || error}`);
     return null;
   }
