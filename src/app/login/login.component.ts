@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
       private user: UserService,
       private alert: AlertService,
       private apiService: ApiService,
+      private cookieService: CookieService,
   ) { }
 
   ngOnInit() { }

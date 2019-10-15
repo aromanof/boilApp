@@ -10,6 +10,7 @@ import {NotifierModule} from 'angular-notifier';
 import {SimpleNotificationsModule} from "angular2-notifications";
 import {MaterialModule} from "./shared/modules/material/material.module";
 import {AuthGuard} from "./shared/services/auth-guard.service";
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {AuthGuard} from "./shared/services/auth-guard.service";
   providers: [
       AlertService,
       AuthGuard,
+      CookieService,
   ],
   bootstrap: [AppComponent]
 })
