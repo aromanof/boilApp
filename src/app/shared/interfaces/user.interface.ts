@@ -1,8 +1,7 @@
 export interface UserInterface {
     id: number | string;
     name: string;
-    surname: string;
-    roles: Array<number>;
+    email: string;
     login: string;
-    pass: string;
+    roles: Array<number>;
 }

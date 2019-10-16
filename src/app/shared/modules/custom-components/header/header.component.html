@@ -9,15 +9,10 @@
         <div class="header-container__general-info__tabs">
             <div class="header-container__general-info__tabs--calculations">Рассчет</div>
             <div class="header-container__general-info__tabs--plots">Графики</div>
-            <div class="header-container__general-info__tabs--admin-page">Админ</div>
+            <div class="header-container__general-info__tabs--admin-page" *ngIf="userService.isAdmin()">Админ</div>
         </div>
     </div>
     <div class="header-container__user-info">
-        <div class="header-container__user-info--navigation">
-            <mat-icon>apps</mat-icon>
-        </div>
-        <div class="header-container__user-info--user">
-            <mat-icon>person</mat-icon>
-        </div>
+        <app-header-menu></app-header-menu>
     </div>
 </div>

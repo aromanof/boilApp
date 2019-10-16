@@ -4,7 +4,6 @@
   flex-direction: column
   justify-content: center
   align-items: center
-  height: 100vh
 
 .full-height
   height: 100vh
@@ -38,7 +37,7 @@
   margin-left: -50px
   margin-top: -75px
 
-.login-form
+.auth-form
   width: 320px
   text-align: center
   box-sizing: border-box
@@ -50,7 +49,7 @@
   &__logo
     display: block
     height: 64px
-    width: 64px
+    width: 80px
     margin: auto
     margin-top: -32px !important // to rewrite material style
     background-size: contain
@@ -69,7 +68,10 @@
     &:visited
       color: #2F80ED
   &__submit
-    width: 100%
+    width: 60%
+    text-transform: uppercase
+  &__goTo
+    width: 50px
     text-transform: uppercase
 
 mat-form-field
@@ -93,3 +95,8 @@ mat-form-field
     color: #c5c5c5
     border-bottom: 1px solid
     font-weight: 300
+
+.actions-container
+  width: 100%
+  display: flex
+  justify-content: space-between

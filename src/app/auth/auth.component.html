@@ -1,0 +1,16 @@
+<!--<div *ngIf="loginService.processLoginFlag" class="card-content-loading">-->
+<!--<mat-spinner class="spinner"></mat-spinner>-->
+<!--</div>-->
+
+<mat-card class="auth-form">
+  <div class="auth-form__logo">
+    <img src="../../assets/images/boiler_black.svg" alt="">
+  </div>
+  <h1 class="auth-form__title" i18n="Форма логина|Заголовок">{{auth.isLoginPageOpen ? 'Логин' : 'Регистрация'}}</h1>
+  <mat-card-content>
+    <app-login *ngIf="auth.isLoginPageOpen; else registration"></app-login>
+    <ng-template #registration>
+      <app-registration></app-registration>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

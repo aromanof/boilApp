@@ -1,0 +1,22 @@
+<div class="c-user c-user--header c-dropdown"
+     [matMenuTriggerFor]="userNav">
+  <div class="c-user__logo">
+    <mat-icon>person</mat-icon>
+  </div>
+  <mat-icon class="c-user__arrow">keyboard_arrow_down</mat-icon>
+  <mat-menu #userNav="matMenu"
+            yPosition="below"
+            xPosition="after"
+            [overlapTrigger]="false"
+            class="c-dropdown__list">
+    <ng-template matMenuContent>
+      <a class="c-dropdown__item"
+         mat-menu-item
+         *ngIf="userService.isLoggedIn"
+         (click)="logOut()">
+        <mat-icon>exit_to_app</mat-icon>
+        Log out
+      </a>
+    </ng-template>
+  </mat-menu>
+</div>
