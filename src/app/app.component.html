@@ -1,3 +1,6 @@
 <notifier-container></notifier-container>
 
-<router-outlet></router-outlet>
+<app-main-loader *ngIf="!(pageLoaded | async); else routerPage"></app-main-loader>
+<ng-template #routerPage>
+  <router-outlet></router-outlet>
+</ng-template>

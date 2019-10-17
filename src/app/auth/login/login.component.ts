@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
     ).subscribe(
       loginInfo => {
         if (loginInfo.isValid) {
+          this.user.currentUser = loginInfo.user;
           this.cookieService.set('user-token', loginInfo.token);
           //fix routing
           this.router.navigate(['../home']);

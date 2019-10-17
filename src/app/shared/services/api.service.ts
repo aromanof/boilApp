@@ -25,7 +25,7 @@ export class ApiService {
     );
   }
 
-  public checkLogin(login: string, password: string): Observable<{isValid: boolean, token?: string, user: ExposedUserInterface}> {
+  public checkLogin(login: string, password: string): Observable<{isValid: boolean, token?: string, user: UserInterface}> {
     return this.http.post<any>('http://localhost:8000/user/login', {login, password}, this.httpOptions);
   }
 

@@ -1,6 +1,8 @@
 <div class="c-user c-user--header c-dropdown"
      [matMenuTriggerFor]="userNav">
-  <div class="c-user__logo">
+  <div
+    class="c-user__logo"
+    [matTooltip]="userService.currentUser.name">
     <mat-icon>person</mat-icon>
   </div>
   <mat-icon class="c-user__arrow">keyboard_arrow_down</mat-icon>

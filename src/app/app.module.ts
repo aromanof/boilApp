@@ -11,6 +11,7 @@ import {SimpleNotificationsModule} from "angular2-notifications";
 import {MaterialModule} from "./shared/modules/material/material.module";
 import {AuthGuard} from "./shared/services/auth-guard.service";
 import { CookieService } from 'ngx-cookie-service';
+import { CustomComponentsModule } from './shared/modules/custom-components/custom-components.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CookieService } from 'ngx-cookie-service';
     MaterialModule,
     NotifierModule,
     SimpleNotificationsModule.forRoot(),
+    CustomComponentsModule,
   ],
   providers: [
       AlertService,

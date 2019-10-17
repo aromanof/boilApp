@@ -3,5 +3,5 @@ export interface UserInterface {
     name: string;
     email: string;
     login: string;
-    roles: Array<number>;
+    roles?: Array<number>;
 }

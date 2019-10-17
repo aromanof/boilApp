@@ -13,7 +13,7 @@ const routes: Routes = [
     },
     {
         path: 'home',
-        loadChildren: './user/user.module#UserModule',
+        loadChildren: './home/home.module#HomeModule',
     },
     {
         path: 'admin',

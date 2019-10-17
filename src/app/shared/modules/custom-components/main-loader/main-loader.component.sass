@@ -1,0 +1,55 @@
+@import "../../../../shared/styles/_palette"
+
+.container
+  height: 100vh
+  background: $primary-color
+  display: flex
+  justify-content: center
+  align-items: center
+
+  &__logo
+    height: 140px
+    width: 100px
+
+@keyframes flickerAnimation
+  0%
+    opacity: 1
+  50%
+    opacity: 0
+  90%
+    opacity: 1
+
+@-o-keyframes flickerAnimation
+  0%
+    opacity: 1
+  50%
+    opacity: 0
+  90%
+    opacity: 1
+
+@-moz-keyframes flickerAnimation
+  0%
+    opacity: 1
+  50%
+    opacity: 0
+  90%
+    opacity: 1
+
+@-webkit-keyframes flickerAnimation
+  0%
+    opacity: 1
+  50%
+    opacity: 0
+  90%
+    opacity: 1
+
+
+.animate-flicker
+  -webkit-animation: flickerAnimation 1s infinite
+  -moz-animation: flickerAnimation 1s infinite
+  -o-animation: flickerAnimation 1s infinite
+  animation: flickerAnimation 1s infinite
+
+.loading-text
+  color: white
+  font-size: 24px

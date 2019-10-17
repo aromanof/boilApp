@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'diplomaFrontEndTest';
+  pageLoaded = new BehaviorSubject<boolean>(false);
   public cats = new BehaviorSubject<CatInterface[]>([])
 
   constructor(
@@ -33,13 +34,19 @@ export class AppComponent implements OnInit {
       this.apiService.verifyToken(token).subscribe(
         (userInfo) => {
           this.userService.currentUser = userInfo;
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home']).then(() => this.removeLoader());
         },
         (error) => {
           console.log(error);
-          this.router.navigate(['/auth']);
+          this.router.navigate(['/auth']).then(() => this.removeLoader());
         },
       );
+    } else {
+      this.removeLoader();
     }
+  }
+
+  private removeLoader(): void {
+    setTimeout(() => this.pageLoaded.next(true), 0);
   }
 }
