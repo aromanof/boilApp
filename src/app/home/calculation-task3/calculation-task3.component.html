@@ -1,0 +1,92 @@
+<div class="calculations-label">
+  <p>{{label}}</p>
+</div>
+
+<div class="calculations-container" *ngIf="calculationForm">
+  <div class="form-label">
+    <p>При известной начальной температуре воздуха: {{coefs.T1_1}}°C</p>
+    <p>И конечной температуре воздуха: {{coefs.T1_2}}°C</p>
+  </div>
+  <mat-tab-group class="calculations-container__tabs" dynamicHeight (selectedTabChange)="tabChanged($event)">
+    <mat-tab label="Данные для расчетов">
+      <form [formGroup]="calculationForm" class="calculations-form">
+        <div class="air-mass-block controls-block">
+          <mat-form-field>
+            <input matInput
+                   formControlName="T2_1"
+                   type="email"
+                   placeholder="Начальная температура воды">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   formControlName="T2_2"
+                   type="email"
+                   placeholder="Конечная температура воды">
+          </mat-form-field>
+        </div>
+        <div class="humidity-block controls-block">
+          <mat-form-field>
+            <input matInput
+                   formControlName="I1"
+                   type="email"
+                   placeholder="Энтальпия воздуха на входе">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   formControlName="I2"
+                   type="email"
+                   placeholder="Энтальпия воздуха на выходе">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   formControlName="L"
+                   type="email"
+                   placeholder="Прямоток воздуха">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   formControlName="S"
+                   type="email"
+                   placeholder="Поверхность насадки">
+          </mat-form-field>
+        </div>
+        <div class="humidity-block controls-block">
+          <mat-form-field>
+            <input matInput
+                   formControlName="V"
+                   type="email"
+                   placeholder="Свободный объем насадки">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   formControlName="d"
+                   type="email"
+                   placeholder="Эквивалентный диаметр насадки">
+          </mat-form-field>
+        </div>
+        <div class="actions-block">
+          <button mat-raised-button
+                  class="text-uppercase"
+                  color="primary"
+                  [disabled]="calculationForm.invalid"
+                  (click)="calculate()">Расчитать
+          </button>
+          <button mat-raised-button
+                  class="text-uppercase"
+                  color="warn"
+                  (click)="resetForm()">Очистить форму
+          </button>
+        </div>
+      </form>
+      <div class="results-container" *ngIf="calculationResults">
+        <hr>
+        <app-calculation-results [taskType]="'Task3'" [calculationResults]="calculationResults"></app-calculation-results>
+      </div>
+    </mat-tab>
+    <mat-tab label="Графическое представление расчетов">
+      <div class="chart-container">
+        <app-calculation-chart [xAxisLabel]="'Площадь поверхности насадки'" [taskType]="'Task3'" [tabChanged]="onChartInit" [calculationsResults]="chartCalculationResults"></app-calculation-chart>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

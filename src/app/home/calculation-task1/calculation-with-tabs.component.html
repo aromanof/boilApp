@@ -1,0 +1,87 @@
+<div class="calculations-label">
+  <p>{{label}}</p>
+</div>
+
+<ng-container *ngIf="!(coefsLoading | async); else loading">
+  <div class="calculations-container">
+      <div class="form-label">
+        <p>При известном барометрическом давлениие {{coefs.Pb}}кПа</p>
+      </div>
+      <mat-tab-group class="calculations-container__tabs" dynamicHeight (selectedTabChange)="tabChanged($event)">
+        <mat-tab label="Данные для расчетов">
+          <form [formGroup]="calculationForm" class="calculations-form">
+            <div class="air-mass-block controls-block">
+              <mat-form-field>
+                <input matInput
+                       formControlName="G1"
+                       type="email"
+                       placeholder="Начальная масса воздуха">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput
+                       formControlName="G2"
+                       type="email"
+                       placeholder="Конечная масса воздуха">
+              </mat-form-field>
+            </div>
+            <div class="temerature-block controls-block">
+              <mat-form-field>
+                <input matInput
+                       formControlName="T1"
+                       type="email"
+                       placeholder="Начальная температура">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput
+                       formControlName="T2"
+                       type="email"
+                       placeholder="Конечная температура">
+              </mat-form-field>
+            </div>
+            <div class="humidity-block controls-block">
+              <mat-form-field>
+                <input matInput
+                       formControlName="Phi1"
+                       type="email"
+                       placeholder="Начальная влажность воздуха">
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput
+                       formControlName="Phi2"
+                       type="email"
+                       placeholder="Конечная влажность воздуха">
+              </mat-form-field>
+            </div>
+            <div class="actions-block">
+              <button mat-raised-button
+                      class="text-uppercase"
+                      color="primary"
+                      [disabled]="calculationForm.invalid"
+                      (click)="calculate()">Расчитать
+              </button>
+              <button mat-raised-button
+                      class="text-uppercase"
+                      color="warn"
+                      (click)="resetForm()">Очистить форму
+              </button>
+            </div>
+          </form>
+          <div class="results-container" *ngIf="calculationResults">
+            <hr>
+            <app-calculation-results [taskType]="'Task1'" [calculationResults]="calculationResults"></app-calculation-results>
+          </div>
+        </mat-tab>
+        <mat-tab class="chart-tab" label="Графическое представление расчетов">
+          <div class="chart-container">
+            <app-calculation-chart [xAxisLabel]="'Температура смеси'" [taskType]="'Task1'" [tabChanged]="onChartInit" [calculationsResults]="chartCalculationResults"></app-calculation-chart>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <div class="loader-container">
+    <mat-spinner class="loader"></mat-spinner>
+  </div>
+</ng-template>

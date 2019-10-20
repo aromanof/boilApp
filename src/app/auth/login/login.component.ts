@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
           this.alert.showErrorMessage('Не правильный логин или пароль');
         }
       },
-      error => console.log(error),
+      error => this.alert.handleError(error.error),
     );
   }
 

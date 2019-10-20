@@ -1,0 +1,12 @@
+<div class="results-container" *ngIf="taskType === 'Task1'; else task3ResultsContainer">
+  <p>Влагосодержание смеси: {{calculationResults.dSm}} кг/1 кг. с. в.</p>
+  <p>Энтальпия смеси: {{calculationResults.iSm}} кДж/кг</p>
+  <p>Температура смеси: {{calculationResults.tSm}}С</p>
+  <p>Относительная влажность смеси: {{calculationResults.phiSm}}%</p>
+</div>
+
+<ng-template #task3ResultsContainer>
+  <p>Диаметр скуббера: {{calculationResults.skooberDiametr}} м</p>
+  <p>Объем насадки: {{calculationResults.nozzleVolume}} м<sup>3</sup></p>
+  <p class="final-answer">Высота насадки: {{calculationResults.nozzleHeight}} м</p>
+</ng-template>
