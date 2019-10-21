@@ -1,10 +1,32 @@
-*
-  -webkit-box-sizing: border-box
-  -moz-box-sizing: border-box
-  box-sizing: border-box
+.calculations-label
+  font-size: 24px
+  font-weight: 600
 
-.container
-  margin: 0
-  position: relative
-  &__main-page
-    padding-top: 60px
+.loader-container
+  display: flex
+  justify-content: center
+  margin: 50px 0
+
+.admin-container
+  display: flex
+  justify-content: space-between
+
+  .task1-params, .task3-params
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    &__disable
+      margin-bottom: 20px
+
+    &__form
+      width: 100%
+      display: flex
+      flex-direction: column
+      align-items: center
+
+      .controls-block
+        width: 100%
+        display: flex
+        justify-content: space-evenly
+

@@ -13,7 +13,7 @@ import { CoefInterfaceTask1 } from '../../shared/interfaces/coefInterfaceTask1';
 export class UnitConvertionComponent implements OnInit {
   private conversionModel;
   convertionForm: FormGroup;
-  selectedSiValue = '';
+  selectedSiValue = UnitConvertionEnum.Pa;
   selectedMkggsValue = '';
   unitConversionEnum = UnitConvertionEnum;
   siValues: Array<string>;
@@ -40,13 +40,13 @@ export class UnitConvertionComponent implements OnInit {
   }
 
   calculate(): void {
-    this.convertionForm.get('mkggs').setValue(
-      this.getCoefficient(
-        this.conversionModel,
-        this.selectedSiValue,
-        this.selectedMkggsValue,
-      ) * this.siInputValuem
-    );
+    const conversionValue = Number(this.getCoefficient(
+      this.conversionModel,
+      this.selectedSiValue,
+      this.selectedMkggsValue,
+    ) * this.siInputValue).toFixed(8);
+
+    this.convertionForm.get('mkggs').setValue(conversionValue);
   }
 
   get siInputValue(): number {
@@ -78,20 +78,22 @@ export class UnitConvertionComponent implements OnInit {
     return Object.keys(convertionModel);
   }
 
-  getMKGSSValuesBySiValue(convertionModel: any, SiValue: UnitConvertionEnum) {
+  getMKGSSValuesBySiValue(convertionModel: any, SiValue: string) {
     return Object.keys(convertionModel[SiValue]);
   }
 
   onSiValueChange(event: MatSelectChange) {
     this.selectedSiValue = event.value;
     this.mkgssValues = this.getMKGSSValuesBySiValue(this.conversionModel, event.value);
+    this.selectedMkggsValue = null;
+    this.convertionForm.get('mkggs').setValue(null);
   }
 
   onMkggsValueChange(event: MatSelectChange) {
     this.selectedMkggsValue = event.value;
   }
 
-  getCoefficient(convertionModel: any, SiValue: UnitConvertionEnum, MkggsValue: UnitConvertionEnum): number {
+  getCoefficient(convertionModel: any, SiValue: string, MkggsValue: string): number {
     console.log(convertionModel[SiValue][MkggsValue]);
     return convertionModel[SiValue][MkggsValue];
   }

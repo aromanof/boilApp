@@ -4,7 +4,7 @@ import { CatInterface } from '../interfaces/cat.interface';
 import { Observable } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 import { UserRoles } from '../enums/user-roles.enum';
-import { UserInterface } from '../interfaces/user.interface';
+import { LoginResponseInterface, UserInterface, VerifyTokenResponseInterface } from '../interfaces/user.interface';
 import { ExposedUserInterface } from '../interfaces/exposed-user.interface';
 import { CoefInterfaceTask1, CoefInterfaceTask3 } from '../interfaces/coefInterfaceTask1';
 import { Task1CalculationsInterface, Task3CalculationsInterface } from '../interfaces/calculations.interface';
@@ -26,7 +26,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  public checkLogin(login: string, password: string): Observable<{isValid: boolean, token?: string, user: UserInterface}> {
+  public checkLogin(login: string, password: string): Observable<LoginResponseInterface> {
     return this.http.post<any>(this.serverHost + '/user/login', {login, password}, this.httpOptions);
   }
 
@@ -34,7 +34,7 @@ export class ApiService {
     return this.http.post<any>(this.serverHost + '/user/create', {login, password, name, email}, this.httpOptions);
   }
 
-  public verifyToken(token: string): Observable<UserInterface> {
+  public verifyToken(token: string): Observable<VerifyTokenResponseInterface> {
     return this.http.post<any>(this.serverHost + '/user/verifyToken', {token}, this.httpOptions);
   }
 
@@ -60,5 +60,21 @@ export class ApiService {
 
   public calculateTask3(coefs: CoefInterfaceTask3): Observable<Task3CalculationsInterface> {
     return this.http.post<any>(this.serverHost + '/calculations/calculate-task3', coefs, this.httpOptions);
+  }
+
+  public updateDisabledValueTask1(isDisabled: boolean): Observable<Task3CalculationsInterface> {
+    return this.http.post<any>(this.serverHost + '/admin/disable-task1', {isDisabled}, this.httpOptions);
+  }
+
+  public updateDisabledValueTask3(isDisabled: boolean): Observable<Task3CalculationsInterface> {
+    return this.http.post<any>(this.serverHost + '/admin/disable-task3', {isDisabled}, this.httpOptions);
+  }
+
+  public updateCoeficientsTask1(coefs: CoefInterfaceTask1): Observable<Task3CalculationsInterface> {
+    return this.http.post<any>(this.serverHost + '/admin/update-task1', coefs, this.httpOptions);
+  }
+
+  public updateCoeficientsTask3(coefs: CoefInterfaceTask3): Observable<Task3CalculationsInterface> {
+    return this.http.post<any>(this.serverHost + '/admin/update-task3', coefs, this.httpOptions);
   }
 }

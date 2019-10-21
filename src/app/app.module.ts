@@ -12,6 +12,7 @@ import {MaterialModule} from "./shared/modules/material/material.module";
 import {AuthGuard} from "./shared/services/auth-guard.service";
 import { CookieService } from 'ngx-cookie-service';
 import { CustomComponentsModule } from './shared/modules/custom-components/custom-components.module';
+import { AdminGuard } from './home/admin/admin-guard.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CustomComponentsModule } from './shared/modules/custom-components/custo
   ],
   providers: [
       AlertService,
+      AdminGuard,
       AuthGuard,
       CookieService,
   ],

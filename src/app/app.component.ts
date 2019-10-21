@@ -33,11 +33,10 @@ export class AppComponent implements OnInit {
     if (token) {
       this.apiService.verifyToken(token).subscribe(
         (userInfo) => {
-          this.userService.currentUser = userInfo;
+          this.userService.currentUser = userInfo.user;
           this.router.navigate(['/home']).then(() => this.removeLoader());
         },
         (error) => {
-          console.log(error);
           this.router.navigate(['/auth']).then(() => this.removeLoader());
         },
       );

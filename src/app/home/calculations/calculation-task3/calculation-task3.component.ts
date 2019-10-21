@@ -45,16 +45,16 @@ export class CalculationTask3Component implements OnInit {
 
   private createCalculationForm(coefs: CoefInterfaceTask3): void {
     this.calculationForm = new FormGroup({
-      T1_1: new FormControl(coefs.T1_1, Validators.required),
-      T1_2: new FormControl(coefs.T1_2, Validators.required),
-      T2_1: new FormControl(coefs.T2_1, Validators.required),
-      T2_2: new FormControl(coefs.T2_2, Validators.required),
-      I1: new FormControl(coefs.I1, Validators.required),
-      I2: new FormControl(coefs.I2, Validators.required),
-      L: new FormControl(coefs.L, Validators.required),
-      S: new FormControl(coefs.S, Validators.required),
-      V: new FormControl(coefs.V, Validators.required),
-      d: new FormControl(coefs.d, Validators.required),
+      T1_1: new FormControl({ value: coefs.T1_1, disabled: coefs.disableInput }, Validators.required),
+      T1_2: new FormControl({ value: coefs.T1_2, disabled: coefs.disableInput }, Validators.required),
+      T2_1: new FormControl({ value: coefs.T2_1, disabled: coefs.disableInput }, Validators.required),
+      T2_2: new FormControl({ value: coefs.T2_2, disabled: coefs.disableInput }, Validators.required),
+      I1: new FormControl({ value: coefs.I1, disabled: coefs.disableInput }, Validators.required),
+      I2: new FormControl({ value: coefs.I2, disabled: coefs.disableInput }, Validators.required),
+      L: new FormControl({ value: coefs.L, disabled: coefs.disableInput }, Validators.required),
+      S: new FormControl({ value: coefs.S, disabled: coefs.disableInput }, Validators.required),
+      V: new FormControl({ value: coefs.V, disabled: coefs.disableInput }, Validators.required),
+      d: new FormControl({ value: coefs.d, disabled: coefs.disableInput }, Validators.required),
     });
   }
 

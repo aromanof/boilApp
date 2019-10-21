@@ -6,6 +6,7 @@
   <div class="calculations-container">
       <div class="form-label">
         <p>При известном барометрическом давлениие {{coefs.Pb}}кПа</p>
+        <p *ngIf="coefs.disableInput">Форма заблокирована для редактирования администратором</p>
       </div>
       <mat-tab-group class="calculations-container__tabs" dynamicHeight (selectedTabChange)="tabChanged($event)">
         <mat-tab label="Данные для расчетов">
@@ -62,6 +63,7 @@
               <button mat-raised-button
                       class="text-uppercase"
                       color="warn"
+                      [disabled]="coefs.disableInput"
                       (click)="resetForm()">Очистить форму
               </button>
             </div>

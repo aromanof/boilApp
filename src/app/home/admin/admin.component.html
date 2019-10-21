@@ -1,6 +1,152 @@
-<div class="container">
-  <app-header class="container__header"></app-header>
-  <div class="container__main-page">
-      admin works!
+<div class="calculations-label">
+  <p>Управление параметрами вычислений</p>
+</div>
+
+<div class="admin-container" *ngIf="coef1Form && coef3Form && !(coefsLoading | async); else loading">
+  <div class="task1-params">
+    <div class="task1-params__disable">
+      <mat-slide-toggle
+        (change)="task1DisableChanged($event)"
+        class="example-margin"
+        [color]="'primary'"
+        [checked]="coefsTask1.disableInput">
+        Отключить возможность ввода данных для расчета первой задачи
+      </mat-slide-toggle>
+    </div>
+    <form [formGroup]="coef1Form" class="task1-params__form">
+      <div class="air-mass-block controls-block">
+        <mat-form-field>
+          <input matInput
+                 formControlName="G1"
+                 type="email"
+                 placeholder="Начальная масса воздуха">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput
+                 formControlName="G2"
+                 type="email"
+                 placeholder="Конечная масса воздуха">
+        </mat-form-field>
+      </div>
+      <div class="temerature-block controls-block">
+        <mat-form-field>
+          <input matInput
+                 formControlName="T1"
+                 type="email"
+                 placeholder="Начальная температура">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput
+                 formControlName="T2"
+                 type="email"
+                 placeholder="Конечная температура">
+        </mat-form-field>
+      </div>
+      <div class="humidity-block controls-block">
+        <mat-form-field>
+          <input matInput
+                 formControlName="Phi1"
+                 type="email"
+                 placeholder="Начальная влажность воздуха">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput
+                 formControlName="Phi2"
+                 type="email"
+                 placeholder="Конечная влажность воздуха">
+        </mat-form-field>
+      </div>
+      <div class="actions-block">
+        <button mat-raised-button
+                class="text-uppercase"
+                color="primary"
+                [disabled]="coef1Form.pristine"
+                (click)="updateTask1()">Обновить
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="task3-params">
+    <div class="task3-params__disable">
+      <mat-slide-toggle
+        (change)="task3DisableChanged($event)"
+        class="example-margin"
+        [color]="'primary'"
+        [checked]="coefsTask3.disableInput">
+        Отключить возможность ввода данных для расчета второй задачи
+      </mat-slide-toggle>
+    </div>
+    <form [formGroup]="coef3Form" class="task3-params__form">
+      <div class="air-mass-block controls-block">
+        <mat-form-field>
+          <input matInput
+                 formControlName="T2_1"
+                 type="email"
+                 placeholder="Начальная температура воды">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput
+                 formControlName="T2_2"
+                 type="email"
+                 placeholder="Конечная температура воды">
+        </mat-form-field>
+      </div>
+      <div class="humidity-block controls-block">
+        <mat-form-field>
+          <input matInput
+                 formControlName="I1"
+                 type="email"
+                 placeholder="Энтальпия воздуха на входе">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput
+                 formControlName="I2"
+                 type="email"
+                 placeholder="Энтальпия воздуха на выходе">
+        </mat-form-field>
+      </div>
+      <div class="humidity-block controls-block">
+        <mat-form-field>
+          <input matInput
+                 formControlName="L"
+                 type="email"
+                 placeholder="Прямоток воздуха">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput
+                 formControlName="S"
+                 type="email"
+                 placeholder="Поверхность насадки">
+        </mat-form-field>
+      </div>
+      <div class="controls-block">
+        <mat-form-field>
+          <input matInput
+                 formControlName="V"
+                 type="email"
+                 placeholder="Свободный объем насадки">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput
+                 formControlName="d"
+                 type="email"
+                 placeholder="Эквивалентный диаметр насадки">
+        </mat-form-field>
+      </div>
+      <div class="actions-block">
+        <button mat-raised-button
+                class="text-uppercase"
+                color="primary"
+                [disabled]="coef3Form.pristine"
+                (click)="updateTask3()">Обновить
+        </button>
+      </div>
+    </form>
   </div>
 </div>
+
+<ng-template #loading>
+  <div class="loader-container">
+    <mat-spinner class="loader"></mat-spinner>
+  </div>
+</ng-template>

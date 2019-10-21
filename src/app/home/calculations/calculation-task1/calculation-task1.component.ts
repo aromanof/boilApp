@@ -43,12 +43,12 @@ export class CalculationTask1Component implements OnInit {
 
   private createCalculationForm(coefs: CoefInterfaceTask1): void {
     this.calculationForm = new FormGroup({
-      G1: new FormControl(coefs.G1, Validators.required),
-      G2: new FormControl(coefs.G2, Validators.required),
-      T1: new FormControl(coefs.T1, Validators.required),
-      T2: new FormControl(coefs.T2, Validators.required),
-      Phi1: new FormControl(coefs.Phi1, Validators.required),
-      Phi2: new FormControl(coefs.Phi2, Validators.required),
+      G1: new FormControl({ value: coefs.G1, disabled: coefs.disableInput }, Validators.required),
+      G2: new FormControl({ value: coefs.G2, disabled: coefs.disableInput }, Validators.required),
+      T1: new FormControl({ value: coefs.T1, disabled: coefs.disableInput }, Validators.required),
+      T2: new FormControl({ value: coefs.T2, disabled: coefs.disableInput }, Validators.required),
+      Phi1: new FormControl({ value: coefs.Phi1, disabled: coefs.disableInput }, Validators.required),
+      Phi2: new FormControl({ value: coefs.Phi2, disabled: coefs.disableInput }, Validators.required),
     })
   }
 
