@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from '../../shared/services/api.service';
-import { CoefInterfaceTask1 } from '../../shared/interfaces/coefInterfaceTask1';
-import { AlertService } from '../../shared/services/alert.service';
+import { ApiService } from '../../../shared/services/api.service';
+import { CoefInterfaceTask1 } from '../../../shared/interfaces/coefInterfaceTask1';
+import { AlertService } from '../../../shared/services/alert.service';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { Task1CalculationsInterface } from '../../shared/interfaces/calculations.interface';
+import { Task1CalculationsInterface } from '../../../shared/interfaces/calculations.interface';
 import { Chart } from 'chart.js';
 import { MatTabChangeEvent } from '@angular/material';
-import { Task1TemperatureCalculationChartInterface } from '../../shared/interfaces/calculation-chart.interface';
+import { Task1TemperatureCalculationChartInterface } from '../../../shared/interfaces/calculation-chart.interface';
 
 @Component({
   selector: 'app-calculation-task1',

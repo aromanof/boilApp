@@ -1,16 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CoefInterfaceTask1, CoefInterfaceTask3 } from '../../shared/interfaces/coefInterfaceTask1';
+import { CoefInterfaceTask1, CoefInterfaceTask3 } from '../../../shared/interfaces/coefInterfaceTask1';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Task1CalculationsInterface, Task3CalculationsInterface } from '../../shared/interfaces/calculations.interface';
-import { ApiService } from '../../shared/services/api.service';
-import { AlertService } from '../../shared/services/alert.service';
+import { Task1CalculationsInterface, Task3CalculationsInterface } from '../../../shared/interfaces/calculations.interface';
+import { ApiService } from '../../../shared/services/api.service';
+import { AlertService } from '../../../shared/services/alert.service';
 import { finalize } from 'rxjs/operators';
 import { MatTabChangeEvent } from '@angular/material';
 import {
   Task1TemperatureCalculationChartInterface,
   Task3NozzleHeightCalculationChartInterface
-} from '../../shared/interfaces/calculation-chart.interface';
+} from '../../../shared/interfaces/calculation-chart.interface';
 
 @Component({
   selector: 'app-calculation-task3',

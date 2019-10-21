@@ -6,7 +6,7 @@ import { filter } from 'rxjs/operators';
 import {
   Task1TemperatureCalculationChartInterface,
   Task3NozzleHeightCalculationChartInterface
-} from '../../shared/interfaces/calculation-chart.interface';
+} from '../../../shared/interfaces/calculation-chart.interface';
 import { TaskType } from '../calculation-results/calculation-results.component';
 
 @Component({

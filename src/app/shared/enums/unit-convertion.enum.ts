@@ -1,0 +1,15 @@
+export enum UnitConvertionEnum {
+  Pa = 'Паскали',
+  KgsM2 = 'кгс/м2',
+  NM2 = 'Н/м2',
+  MmRtSt = 'мм. рт. ст.',
+  Bar = 'бар',
+  Dj = 'Дж',
+  KgsM = 'кгс∙м',
+  LsH = 'л.с. ∙ ч',
+  KwT = 'кВт',
+  Kal = 'кал',
+  Wt = 'Вт',
+  KalS = 'кал/с',
+  KkalH = 'ккал/ч',
+}

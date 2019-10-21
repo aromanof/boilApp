@@ -1,0 +1,47 @@
+<div class="select-container">
+  <mat-form-field>
+    <mat-label>Величина СИ</mat-label>
+    <mat-select (selectionChange)="onSiValueChange($event)">
+      <mat-option *ngFor="let siValue of siValues" [value]="siValue">
+        {{siValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Величина МКГСС</mat-label>
+    <mat-select (selectionChange)="onMkggsValueChange($event)">
+      <mat-option *ngFor="let mkggsValue of mkgssValues" [value]="mkggsValue">
+        {{mkggsValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="input-container">
+  <form [formGroup]="convertionForm">
+    <mat-form-field>
+      <input matInput
+             formControlName="si"
+             ngDefaultControl
+             type="email"
+             placeholder="Введите значение">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput
+             formControlName="mkggs"
+             ngDefaultControl
+             type="email">
+    </mat-form-field>
+  </form>
+</div>
+
+<button mat-raised-button
+        class="text-uppercase"
+        type="submit"
+        color="primary"
+        [disabled]="convertionForm.invalid"
+        (click)="calculate()"
+        i18n="Кнопка для входа после ввода логина и пароля|">Расчитать
+</button>

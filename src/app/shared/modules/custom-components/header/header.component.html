@@ -7,9 +7,18 @@
             </div>
         </div>
         <div class="header-container__general-info__tabs">
-            <div class="header-container__general-info__tabs--calculations">Рассчет</div>
-            <div class="header-container__general-info__tabs--plots">Графики</div>
-            <div class="header-container__general-info__tabs--admin-page" *ngIf="userService.isAdmin()">Админ</div>
+            <div class="header-container__general-info__tabs--item"
+                 [class.header-container__general-info__tabs--item__active]="isTabActive(headerTabsEnum.Calculations)"
+                 (click)="tabChanged(headerTabsEnum.Calculations)">
+              Рассчет
+            </div>
+            <div class="header-container__general-info__tabs--item"
+                 [class.header-container__general-info__tabs--item__active]="isTabActive(headerTabsEnum.UnitConvertions)"
+                 (click)="tabChanged(headerTabsEnum.UnitConvertions)">Конвертор величин</div>
+            <div class="header-container__general-info__tabs--item"
+                 *ngIf="userService.isAdmin()"
+                 [class.header-container__general-info__tabs--item__active]="isTabActive(headerTabsEnum.Admin)"
+                 (click)="tabChanged(headerTabsEnum.Admin)">Админ</div>
         </div>
     </div>
     <div class="header-container__user-info">

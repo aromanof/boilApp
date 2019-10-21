@@ -1,8 +1,8 @@
 // angular
 import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import {UserService} from '../shared/services/user.service';
-import {UserRoles} from '../shared/enums/user-roles.enum';
+import {UserService} from '../../shared/services/user.service';
+import {UserRoles} from '../../shared/enums/user-roles.enum';
 
 // enums
 

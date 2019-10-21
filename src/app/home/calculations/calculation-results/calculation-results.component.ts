@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Task1CalculationsInterface, Task3CalculationsInterface } from '../../shared/interfaces/calculations.interface';
+import { Task1CalculationsInterface, Task3CalculationsInterface } from '../../../shared/interfaces/calculations.interface';
 
 export type TaskType = 'Task1' | 'Task3';
 
