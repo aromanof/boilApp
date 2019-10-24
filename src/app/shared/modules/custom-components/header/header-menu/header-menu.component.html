@@ -15,9 +15,16 @@
       <a class="c-dropdown__item"
          mat-menu-item
          *ngIf="userService.isLoggedIn"
+         (click)="goToMaterials()">
+        <mat-icon>info</mat-icon>
+        Доп. материалы
+      </a>
+      <a class="c-dropdown__item"
+         mat-menu-item
+         *ngIf="userService.isLoggedIn"
          (click)="logOut()">
         <mat-icon>exit_to_app</mat-icon>
-        Log out
+        Выход
       </a>
     </ng-template>
   </mat-menu>

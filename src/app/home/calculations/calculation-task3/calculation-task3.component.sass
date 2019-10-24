@@ -1,6 +1,8 @@
 .calculations-container
   display: flex
   justify-content: center
+  @media (max-width: 800px)
+    flex-wrap: wrap
 
   &__tabs
     width: 100%
@@ -12,6 +14,7 @@
     flex-direction: column
 
 .calculations-form
+  flex-wrap: wrap
   display: flex
   justify-content: space-evenly
   margin: 25px 0
@@ -42,3 +45,6 @@
 .chart-container
   display: flex
   justify-content: center
+
+.calculate-button
+  margin-bottom: 10px

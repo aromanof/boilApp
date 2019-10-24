@@ -14,6 +14,7 @@ import { ChartsModule } from 'ng2-charts';
 import { CalculationsComponent } from './calculations/calculations.component';
 import { UnitConvertionComponent } from './unit-convertion/unit-convertion.component';
 import { AdminComponent } from './admin/admin.component';
+import { MaterialsComponent } from './materials/materials.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AdminComponent } from './admin/admin.component';
     CalculationsComponent,
     UnitConvertionComponent,
     AdminComponent,
+    MaterialsComponent,
   ],
   imports: [
     CommonModule,

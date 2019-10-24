@@ -60,16 +60,19 @@ export class UnitConvertionComponent implements OnInit {
           [this.unitConversionEnum.KgsM2]: 0.101972,
           [this.unitConversionEnum.MmRtSt]: 0.0075,
           [this.unitConversionEnum.Bar]: Math.pow(10, -5),
+          [this.unitConversionEnum.PPSqD]: 0.000145,
       },
       [this.unitConversionEnum.Dj]: {
         [this.unitConversionEnum.KgsM]: 0.101972,
         [this.unitConversionEnum.LsH]: 0.37764 * Math.pow(10, -6),
-        [this.unitConversionEnum.KwT]: 0.27778 * Math.pow(10, -3),
+        [this.unitConversionEnum.wTH]: 0.27778 * Math.pow(10, -3),
         [this.unitConversionEnum.Kal]: 0.23885,
       },
       [this.unitConversionEnum.Wt]: {
         [this.unitConversionEnum.KalS]: 0.23885,
         [this.unitConversionEnum.KkalH]: 0.859845,
+        [this.unitConversionEnum.PoundS]: 0.7375621492783,
+        [this.unitConversionEnum.Ls]: 0.001341,
       },
     }
   }
@@ -94,7 +97,6 @@ export class UnitConvertionComponent implements OnInit {
   }
 
   getCoefficient(convertionModel: any, SiValue: string, MkggsValue: string): number {
-    console.log(convertionModel[SiValue][MkggsValue]);
     return convertionModel[SiValue][MkggsValue];
   }
 

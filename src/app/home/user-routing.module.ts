@@ -6,6 +6,7 @@ import { UnitConvertionComponent } from './unit-convertion/unit-convertion.compo
 import { AuthGuard } from '../shared/services/auth-guard.service';
 import { AdminGuard } from './admin/admin-guard.service';
 import { AdminComponent } from './admin/admin.component';
+import { MaterialsComponent } from './materials/materials.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, children:
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path: 'unit-convertion',
         component: UnitConvertionComponent,
+      },
+      {
+        path: 'materials',
+        component: MaterialsComponent,
       },
       {
         path: 'admin',

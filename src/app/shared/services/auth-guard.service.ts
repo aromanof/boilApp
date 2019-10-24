@@ -4,6 +4,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 
 // app service
 import {UserService} from './user.service';
+import { AlertService } from './alert.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -17,7 +18,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     // Navigate to the processLogin page
-    this.router.navigate([ '/login' ]);
+    this.router.navigate([ '/auth' ]);
     return false;
   }
 }

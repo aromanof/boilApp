@@ -32,7 +32,7 @@ export class RegistrationComponent implements OnInit {
       this.getNameControl().value,
       this.getEmailControl().value,
     ).subscribe(
-      res => console.log(res),
+      res => this.alert.showSuccessMessage('Пользователь успешно зарегистрирован'),
       error => this.alert.handleError(error.error || error),
     );
   }
