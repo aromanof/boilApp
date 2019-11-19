@@ -1,0 +1,44 @@
+<form [formGroup]="calculationForm" class="calculations-form">
+<div class="air-mass-block controls-block">
+    <mat-form-field>
+      <input matInput
+             formControlName="G1"
+             type="email"
+             placeholder="Начальная масса воздуха">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             formControlName="G2"
+             type="email"
+             placeholder="Конечная масса воздуха">
+    </mat-form-field>
+  </div>
+  <div class="temerature-block controls-block">
+    <mat-form-field>
+      <input matInput
+             formControlName="T1"
+             type="email"
+             placeholder="Начальная температура">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             formControlName="T2"
+             type="email"
+             placeholder="Конечная температура">
+    </mat-form-field>
+  </div>
+  <div class="humidity-block controls-block">
+    <mat-form-field>
+      <input matInput
+             formControlName="Phi1"
+             type="email"
+             placeholder="Начальная влажность воздуха">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             formControlName="Phi2"
+             type="email"
+             placeholder="Конечная влажность воздуха">
+    </mat-form-field>
+  </div>
+</form>

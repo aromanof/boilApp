@@ -16,6 +16,9 @@
                  [class.header-container__general-info__tabs--item__active]="isTabActive(headerTabsEnum.UnitConvertions)"
                  (click)="tabChanged(headerTabsEnum.UnitConvertions)">Конвертор величин</div>
             <div class="header-container__general-info__tabs--item"
+                 [class.header-container__general-info__tabs--item__active]="isTabActive(headerTabsEnum.UserHistory)"
+                 (click)="tabChanged(headerTabsEnum.UserHistory)">История расчетов</div>
+            <div class="header-container__general-info__tabs--item"
                  *ngIf="userService.isAdmin()"
                  [class.header-container__general-info__tabs--item__active]="isTabActive(headerTabsEnum.Admin)"
                  (click)="tabChanged(headerTabsEnum.Admin)">Админ</div>

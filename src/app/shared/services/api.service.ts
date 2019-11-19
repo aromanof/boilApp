@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { CatInterface } from '../interfaces/cat.interface';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 import { UserRoles } from '../enums/user-roles.enum';
 import { LoginResponseInterface, UserInterface, VerifyTokenResponseInterface } from '../interfaces/user.interface';
@@ -12,6 +12,8 @@ import {
   Task1TemperatureCalculationChartInterface,
   Task3NozzleHeightCalculationChartInterface
 } from '../interfaces/calculation-chart.interface';
+import { HistoryInterface } from '../interfaces/history.interface';
+import { TaskTypeEnum } from '../enums/task-type.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -76,5 +78,40 @@ export class ApiService {
 
   public updateCoeficientsTask3(coefs: CoefInterfaceTask3): Observable<Task3CalculationsInterface> {
     return this.http.post<any>(this.serverHost + '/admin/update-task3', coefs, this.httpOptions);
+  }
+
+  public getUserHistory(): Observable<HistoryInterface[]> {
+    return of([{
+      userName: 'Alex',
+      date: '12-10-2019',
+      taskType: TaskTypeEnum.ScruberParams,
+      calculationCoefficients: {
+        disableInput: false,
+        G1: '100',
+        G2: '100',
+        T1: '100',
+        T2: '100',
+        Phi1: '100',
+        Phi2: '100',
+        Pb: '100',
+      }
+    }, {
+      userName: 'Peter',
+      date: '10-11-2018',
+      taskType: TaskTypeEnum.NozzleHeight,
+      calculationCoefficients: {
+        disableInput: false,
+        L: '100',
+        T1_1: '100',
+        T1_2: '100',
+        T2_1: '100',
+        T2_2: '100',
+        I1: '100',
+        I2: '100',
+        S: '100',
+        V: '100',
+        d: '100',
+      },
+    }])
   }
 }

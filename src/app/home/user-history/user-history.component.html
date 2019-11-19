@@ -1,0 +1,7 @@
+<div class="unit-conversion-label">
+  <p>История расчетов</p>
+</div>
+
+<div class="history-container">
+  <app-history-card class="history-card" *ngFor="let historyItem of userHistory" [historyInfo]="historyItem"></app-history-card>
+</div>

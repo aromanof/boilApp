@@ -1,0 +1,56 @@
+<form [formGroup]="calculationForm" class="calculations-form">
+  <div class="humidity-block controls-block">
+    <mat-form-field>
+      <input matInput
+             formControlName="I1"
+             type="email"
+             placeholder="Энтальпия воздуха на входе">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             formControlName="I2"
+             type="email"
+             placeholder="Энтальпия воздуха на выходе">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             formControlName="L"
+             type="email"
+             placeholder="Прямоток воздуха">
+    </mat-form-field>
+  </div>
+  <div class="humidity-block controls-block">
+    <mat-form-field>
+      <input matInput
+             formControlName="S"
+             type="email"
+             placeholder="Поверхность насадки">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             formControlName="V"
+             type="email"
+             placeholder="Свободный объем насадки">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             formControlName="d"
+             type="email"
+             placeholder="Эквивалентный диаметр насадки">
+    </mat-form-field>
+  </div>
+  <div class="air-mass-block controls-block">
+    <mat-form-field>
+      <input matInput
+             formControlName="T2_1"
+             type="email"
+             placeholder="Начальная температура воды">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput
+             formControlName="T2_2"
+             type="email"
+             placeholder="Конечная температура воды">
+    </mat-form-field>
+  </div>
+</form>

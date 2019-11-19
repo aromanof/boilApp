@@ -15,6 +15,8 @@ import { CalculationsComponent } from './calculations/calculations.component';
 import { UnitConvertionComponent } from './unit-convertion/unit-convertion.component';
 import { AdminComponent } from './admin/admin.component';
 import { MaterialsComponent } from './materials/materials.component';
+import { UserHistoryComponent } from './user-history/user-history.component';
+import { AdminHistoryComponent } from './admin-history/admin-history.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { MaterialsComponent } from './materials/materials.component';
     UnitConvertionComponent,
     AdminComponent,
     MaterialsComponent,
+    UserHistoryComponent,
+    AdminHistoryComponent,
   ],
   imports: [
     CommonModule,
