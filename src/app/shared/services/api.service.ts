@@ -123,6 +123,6 @@ export class ApiService {
         nozzleVolume: 2,
         nozzleHeight: 3,
       },
-    }]),
+    }]);
   }
 }
