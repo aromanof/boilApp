@@ -48,8 +48,8 @@ export class ApiService {
     return this.http.post<any>(this.serverHost + '/calculations/coefficients3', {}, this.httpOptions);
   }
 
-  public calculateTask1(coefs: CoefInterfaceTask1): Observable<Task1CalculationsInterface> {
-    return this.http.post<any>(this.serverHost + '/calculations/calculate-task1', coefs, this.httpOptions);
+  public calculateTask1(coefs: CoefInterfaceTask1, userId: string): Observable<Task1CalculationsInterface> {
+    return this.http.post<any>(this.serverHost + '/calculations/calculate-task1', {coefs, userId}, this.httpOptions);
   }
 
   public calculateTemperatureChartTask1(T1: number, T2: number, G1: number, G2: number): Observable<Task1TemperatureCalculationChartInterface> {
@@ -60,8 +60,8 @@ export class ApiService {
     return this.http.post<any>(this.serverHost + '/chart/task3-nozzle-surface', coefs, this.httpOptions);
   }
 
-  public calculateTask3(coefs: CoefInterfaceTask3): Observable<Task3CalculationsInterface> {
-    return this.http.post<any>(this.serverHost + '/calculations/calculate-task3', coefs, this.httpOptions);
+  public calculateTask3(coefs: CoefInterfaceTask3, userId: string): Observable<Task3CalculationsInterface> {
+    return this.http.post<any>(this.serverHost + '/calculations/calculate-task3', {coefs, userId}, this.httpOptions);
   }
 
   public updateDisabledValueTask1(isDisabled: boolean): Observable<Task3CalculationsInterface> {
@@ -94,7 +94,13 @@ export class ApiService {
         Phi1: '100',
         Phi2: '100',
         Pb: '100',
-      }
+      },
+      calculationResults: {
+        dSm: 1,
+        iSm: 2,
+        phiSm: 3,
+        tSm: 4,
+      },
     }, {
       userName: 'Peter',
       date: '10-11-2018',
@@ -112,6 +118,11 @@ export class ApiService {
         V: '100',
         d: '100',
       },
-    }])
+      calculationResults: {
+        skooberDiametr: 1,
+        nozzleVolume: 2,
+        nozzleHeight: 3,
+      },
+    }]),
   }
 }

@@ -9,6 +9,8 @@ import { Task1CalculationsInterface } from '../../../shared/interfaces/calculati
 import { Chart } from 'chart.js';
 import { MatTabChangeEvent } from '@angular/material';
 import { Task1TemperatureCalculationChartInterface } from '../../../shared/interfaces/calculation-chart.interface';
+import { TaskTypeEnum } from '../../../shared/enums/task-type.enum';
+import { UserService } from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-calculation-task1',
@@ -24,12 +26,16 @@ export class CalculationTask1Component implements OnInit {
   public chartCalculationResults: Task1TemperatureCalculationChartInterface;
   public onChartInit = new Subject<boolean>();
 
+  taskTypeEnum = TaskTypeEnum;
+
   constructor(
     private api: ApiService,
     private alert: AlertService,
+    private user: UserService,
   ) { }
 
   ngOnInit() {
+    console.log(this.user.currentUser)
     this.api.getCalculationsCoefficientsTask1().pipe(
       finalize(() => this.coefsLoading.next(false))
     ).subscribe(
@@ -61,7 +67,7 @@ export class CalculationTask1Component implements OnInit {
 
   public calculate(): void {
     this.calculationResults = null;
-    this.api.calculateTask1(this.formCoefsObject()).subscribe((res) => {
+    this.api.calculateTask1(this.formCoefsObject(), this.user.currentUser.userId.toString()).subscribe((res) => {
         this.calculationResults = res;
     },
       (error) => this.alert.handleError(error.error)

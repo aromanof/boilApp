@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CoefInterfaceTask1 } from '../../../interfaces/coefInterfaceTask1';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TaskTypeEnum } from '../../../enums/task-type.enum';
+import { Task1CalculationsInterface } from '../../../interfaces/calculations.interface';
 
 @Component({
   selector: 'app-task1-group',
@@ -9,7 +11,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class Task1GroupComponent implements OnInit {
   @Input() task1Coefficients: CoefInterfaceTask1;
+  @Input() task1CalculationResults: Task1CalculationsInterface;
   public calculationForm: FormGroup;
+  taskTypeEnum = TaskTypeEnum;
   constructor() { }
 
   ngOnInit() {

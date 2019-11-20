@@ -7,7 +7,7 @@ import {
   Task1TemperatureCalculationChartInterface,
   Task3NozzleHeightCalculationChartInterface
 } from '../../../shared/interfaces/calculation-chart.interface';
-import { TaskType } from '../calculation-results/calculation-results.component';
+import { TaskTypeEnum } from '../../../shared/enums/task-type.enum';
 
 @Component({
   selector: 'app-calculation-chart',
@@ -18,7 +18,7 @@ export class CalculationChartComponent implements OnInit {
   @Input() xAxisLabel: string;
   @Input() tabChanged: Subject<any>;
   @Input() calculationsResults: Task1TemperatureCalculationChartInterface | Task3NozzleHeightCalculationChartInterface;
-  @Input() taskType: TaskType;
+  @Input() taskType: TaskTypeEnum;
   public lineChartData: ChartDataSets[];
   public lineChartLabels: Label[];
   public lineChartOptions = {
@@ -40,12 +40,12 @@ export class CalculationChartComponent implements OnInit {
     this.tabChanged.pipe(
       filter(() => !!this.calculationsResults),
     ).subscribe(() => {
-      if (this.taskType === 'Task1') {
+      if (this.taskType === TaskTypeEnum.ScruberParams) {
         // @ts-ignore
         this.lineChartData = [{data: this.calculationsResults.startTemperatureList, label: 'Начальная температура'}, {data: this.calculationsResults.endTemperatureList, label: 'Конечная температура'}];
         // @ts-ignore
         this.lineChartLabels = this.calculationsResults.resultTemperatureList;
-      } else if (this.taskType === 'Task3') {
+      } else if (this.taskType === TaskTypeEnum.NozzleHeight) {
         // @ts-ignore
         this.lineChartData = [{data: this.calculationsResults.resultNozzleHeightList, label: 'Высота хордовой насадки'}];
         // @ts-ignore

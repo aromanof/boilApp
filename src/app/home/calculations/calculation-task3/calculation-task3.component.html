@@ -82,12 +82,12 @@
       </form>
       <div class="results-container" *ngIf="calculationResults">
         <hr>
-        <app-calculation-results [taskType]="'Task3'" [calculationResults]="calculationResults"></app-calculation-results>
+        <app-calculation-results [taskType]="taskTypeEnum.NozzleHeight" [calculationResults]="calculationResults"></app-calculation-results>
       </div>
     </mat-tab>
     <mat-tab label="Графическое представление расчетов">
       <div class="chart-container">
-        <app-calculation-chart [xAxisLabel]="'Площадь поверхности насадки'" [taskType]="'Task3'" [tabChanged]="onChartInit" [calculationsResults]="chartCalculationResults"></app-calculation-chart>
+        <app-calculation-chart [xAxisLabel]="'Площадь поверхности насадки'" [taskType]="taskTypeEnum.NozzleHeight" [tabChanged]="onChartInit" [calculationsResults]="chartCalculationResults"></app-calculation-chart>
       </div>
     </mat-tab>
   </mat-tab-group>

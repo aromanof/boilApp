@@ -1,4 +1,4 @@
-<div class="results-container" *ngIf="taskType === 'Task1'; else task3ResultsContainer">
+<div class="results-container" *ngIf="taskType === taskTypeEnum.ScruberParams; else task3ResultsContainer">
   <p>Влагосодержание смеси: {{calculationResults.dSm}} кг/1 кг. с. в.</p>
   <p>Энтальпия смеси: {{calculationResults.iSm}} кДж/кг</p>
   <p>Температура смеси: {{calculationResults.tSm}}С</p>

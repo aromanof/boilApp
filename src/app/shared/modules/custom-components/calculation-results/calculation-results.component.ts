@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Task1CalculationsInterface, Task3CalculationsInterface } from '../../../shared/interfaces/calculations.interface';
-
-export type TaskType = 'Task1' | 'Task3';
+import { TaskTypeEnum } from '../../../enums/task-type.enum';
+import { Task1CalculationsInterface, Task3CalculationsInterface } from '../../../interfaces/calculations.interface';
 
 @Component({
   selector: 'app-calculation-results',
@@ -10,8 +9,8 @@ export type TaskType = 'Task1' | 'Task3';
 })
 export class CalculationResultsComponent implements OnInit {
   @Input() calculationResults: Task1CalculationsInterface | Task3CalculationsInterface;
-  @Input() taskType: TaskType;
-
+  @Input() taskType: TaskTypeEnum;
+  taskTypeEnum = TaskTypeEnum;
   constructor() { }
 
   ngOnInit() {

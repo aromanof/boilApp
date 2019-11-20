@@ -11,6 +11,8 @@ import {
   Task1TemperatureCalculationChartInterface,
   Task3NozzleHeightCalculationChartInterface
 } from '../../../shared/interfaces/calculation-chart.interface';
+import { TaskTypeEnum } from '../../../shared/enums/task-type.enum';
+import { UserService } from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-calculation-task3',
@@ -26,9 +28,12 @@ export class CalculationTask3Component implements OnInit {
   public onChartInit = new Subject<boolean>();
   public chartCalculationResults: Task3NozzleHeightCalculationChartInterface;
 
+  taskTypeEnum = TaskTypeEnum;
+
   constructor(
     private api: ApiService,
     private alert: AlertService,
+    private user: UserService,
   ) { }
 
   ngOnInit() {
@@ -67,7 +72,7 @@ export class CalculationTask3Component implements OnInit {
 
   public calculate(): void {
     this.calculationResults = null;
-    this.api.calculateTask3(this.formCoefsObject()).subscribe((res) => {
+    this.api.calculateTask3(this.formCoefsObject(), this.user.currentUser.userId.toString()).subscribe((res) => {
         this.calculationResults = res;
       },
       (error) => this.alert.handleError(error.error));

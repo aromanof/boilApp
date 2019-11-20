@@ -8,7 +8,6 @@ import { CalculationTask1Component } from './calculations/calculation-task1/calc
 import { CalculationTask2Component } from './calculations/calculation-task2/calculation-task2.component';
 import { CalculationTask3Component } from './calculations/calculation-task3/calculation-task3.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CalculationResultsComponent } from './calculations/calculation-results/calculation-results.component';
 import { CalculationChartComponent } from './calculations/calculation-chart/calculation-chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { CalculationsComponent } from './calculations/calculations.component';
@@ -16,7 +15,6 @@ import { UnitConvertionComponent } from './unit-convertion/unit-convertion.compo
 import { AdminComponent } from './admin/admin.component';
 import { MaterialsComponent } from './materials/materials.component';
 import { UserHistoryComponent } from './user-history/user-history.component';
-import { AdminHistoryComponent } from './admin-history/admin-history.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +22,12 @@ import { AdminHistoryComponent } from './admin-history/admin-history.component';
     CalculationTask1Component,
     CalculationTask2Component,
     CalculationTask3Component,
-    CalculationResultsComponent,
     CalculationChartComponent,
     CalculationsComponent,
     UnitConvertionComponent,
     AdminComponent,
     MaterialsComponent,
     UserHistoryComponent,
-    AdminHistoryComponent,
   ],
   imports: [
     CommonModule,

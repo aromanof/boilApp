@@ -70,12 +70,12 @@
           </form>
           <div class="results-container" *ngIf="calculationResults">
             <hr>
-            <app-calculation-results [taskType]="'Task1'" [calculationResults]="calculationResults"></app-calculation-results>
+            <app-calculation-results [taskType]="taskTypeEnum.ScruberParams" [calculationResults]="calculationResults"></app-calculation-results>
           </div>
         </mat-tab>
         <mat-tab class="chart-tab" label="Графическое представление расчетов">
           <div class="chart-container">
-            <app-calculation-chart [xAxisLabel]="'Температура смеси'" [taskType]="'Task1'" [tabChanged]="onChartInit" [calculationsResults]="chartCalculationResults"></app-calculation-chart>
+            <app-calculation-chart [xAxisLabel]="'Температура смеси'" [taskType]="taskTypeEnum.ScruberParams" [tabChanged]="onChartInit" [calculationsResults]="chartCalculationResults"></app-calculation-chart>
           </div>
         </mat-tab>
       </mat-tab-group>

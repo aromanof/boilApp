@@ -8,12 +8,14 @@ import { HistoryCardComponent } from './history-card/history-card.component';
 import { Task1GroupComponent } from './task1-group/task1-group.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Task3GroupComponent } from './task3-group/task3-group.component';
+import { CalculationResultsComponent } from './calculation-results/calculation-results.component';
 
 const components = [
   HeaderComponent,
   HeaderMenuComponent,
   MainLoaderComponent,
   HistoryCardComponent,
+  CalculationResultsComponent,
 ];
 
 @NgModule({

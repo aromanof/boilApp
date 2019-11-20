@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CoefInterfaceTask1, CoefInterfaceTask3 } from '../../../interfaces/coefInterfaceTask1';
+import { CoefInterfaceTask3 } from '../../../interfaces/coefInterfaceTask1';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Task3CalculationsInterface } from '../../../interfaces/calculations.interface';
+import { TaskTypeEnum } from '../../../enums/task-type.enum';
 
 @Component({
   selector: 'app-task3-group',
@@ -9,7 +11,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class Task3GroupComponent implements OnInit {
   @Input() task3Coefficients: CoefInterfaceTask3;
+  @Input() task3CalculationResults: Task3CalculationsInterface;
   public calculationForm: FormGroup;
+
+  taskTypeEnum = TaskTypeEnum;
+
   constructor() { }
 
   ngOnInit() {
@@ -30,5 +36,4 @@ export class Task3GroupComponent implements OnInit {
       d: new FormControl({ value: coefs.d, disabled: true }, Validators.required),
     });
   }
-
 }

@@ -1,44 +1,59 @@
-<form [formGroup]="calculationForm" class="calculations-form">
-<div class="air-mass-block controls-block">
-    <mat-form-field>
-      <input matInput
-             formControlName="G1"
-             type="email"
-             placeholder="Начальная масса воздуха">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput
-             formControlName="G2"
-             type="email"
-             placeholder="Конечная масса воздуха">
-    </mat-form-field>
+<div class="group-container">
+  <form [formGroup]="calculationForm" class="calculations-form">
+  <div class="air-mass-block controls-block">
+      <mat-form-field>
+        <input matInput
+              formControlName="G1"
+              type="email"
+              placeholder="Начальная масса воздуха">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+              formControlName="G2"
+              type="email"
+              placeholder="Конечная масса воздуха">
+      </mat-form-field>
+    </div>
+    <div class="temerature-block controls-block">
+      <mat-form-field>
+        <input matInput
+              formControlName="T1"
+              type="email"
+              placeholder="Начальная температура">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+              formControlName="T2"
+              type="email"
+              placeholder="Конечная температура">
+      </mat-form-field>
+    </div>
+    <div class="humidity-block controls-block">
+      <mat-form-field>
+        <input matInput
+              formControlName="Phi1"
+              type="email"
+              placeholder="Начальная влажность воздуха">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+              formControlName="Phi2"
+              type="email"
+              placeholder="Конечная влажность воздуха">
+      </mat-form-field>
+    </div>
+  </form>
+
+  <div class="results">
+    <app-calculation-results [calculationResults]="task1CalculationResults" [taskType]="taskTypeEnum.ScruberParams"></app-calculation-results>
   </div>
-  <div class="temerature-block controls-block">
-    <mat-form-field>
-      <input matInput
-             formControlName="T1"
-             type="email"
-             placeholder="Начальная температура">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput
-             formControlName="T2"
-             type="email"
-             placeholder="Конечная температура">
-    </mat-form-field>
+
+  <div class="actions-block">
+    <button mat-raised-button
+            class="text-uppercase calculate-button"
+            color="primary"
+            [disabled]="calculationForm.invalid"
+            (click)="calculate()">Расчитать
+    </button>
   </div>
-  <div class="humidity-block controls-block">
-    <mat-form-field>
-      <input matInput
-             formControlName="Phi1"
-             type="email"
-             placeholder="Начальная влажность воздуха">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput
-             formControlName="Phi2"
-             type="email"
-             placeholder="Конечная влажность воздуха">
-    </mat-form-field>
-  </div>
-</form>
+</div>
