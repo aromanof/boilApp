@@ -23,7 +23,6 @@ export class CalculationsComponent implements OnInit {
     });
   }
 
-    ngOnInit() {
-  }
+    ngOnInit() {}
 
 }
