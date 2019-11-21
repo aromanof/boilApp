@@ -1,16 +1,21 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../../shared/services/api.service';
-import { CoefInterfaceTask1 } from '../../../shared/interfaces/coefInterfaceTask1';
+import { CoefInterfaceTask1, CoefInterfaceTask3 } from '../../../shared/interfaces/coefInterfaceTask1';
 import { AlertService } from '../../../shared/services/alert.service';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { Task1CalculationsInterface } from '../../../shared/interfaces/calculations.interface';
+import {
+  Task1CalculationsInterface,
+  Task3CalculationsInterface
+} from '../../../shared/interfaces/calculations.interface';
 import { Chart } from 'chart.js';
 import { MatTabChangeEvent } from '@angular/material';
 import { Task1TemperatureCalculationChartInterface } from '../../../shared/interfaces/calculation-chart.interface';
 import { TaskTypeEnum } from '../../../shared/enums/task-type.enum';
 import { UserService } from '../../../shared/services/user.service';
+import { DateService } from '../../../shared/services/date.service';
+import { NavigationCalculationsInterface } from '../../../shared/interfaces/navigation-calculations.interface';
 
 @Component({
   selector: 'app-calculation-task1',
@@ -19,6 +24,7 @@ import { UserService } from '../../../shared/services/user.service';
 })
 export class CalculationTask1Component implements OnInit {
   @Input() label: string;
+  @Input() calculations: NavigationCalculationsInterface;
   public calculationForm: FormGroup;
   public coefs: CoefInterfaceTask1;
   public coefsLoading = new BehaviorSubject<boolean>(true);
@@ -32,19 +38,27 @@ export class CalculationTask1Component implements OnInit {
     private api: ApiService,
     private alert: AlertService,
     private user: UserService,
+    private dateService: DateService,
   ) { }
 
   ngOnInit() {
-    console.log(this.user.currentUser)
-    this.api.getCalculationsCoefficientsTask1().pipe(
-      finalize(() => this.coefsLoading.next(false))
-    ).subscribe(
-      coefs => {
-        this.coefs = coefs;
-        this.createCalculationForm(coefs);
-      },
-      this.alert.handleError,
-    );
+    if (this.calculations && +this.calculations.taskNum === TaskTypeEnum.ScruberParams) {
+      this.coefs = this.calculations.coefs as unknown as CoefInterfaceTask1;
+      this.createCalculationForm(this.coefs);
+      this.calculationResults = this.calculations.results as unknown as Task1CalculationsInterface;
+      this.calculateChart();
+      this.coefsLoading.next(false);
+    } else {
+      this.api.getCalculationsCoefficientsTask1().pipe(
+        finalize(() => this.coefsLoading.next(false))
+      ).subscribe(
+        coefs => {
+          this.coefs = coefs;
+          this.createCalculationForm(coefs);
+        },
+        this.alert.handleError,
+      );
+    }
   }
 
   private createCalculationForm(coefs: CoefInterfaceTask1): void {
@@ -67,12 +81,15 @@ export class CalculationTask1Component implements OnInit {
 
   public calculate(): void {
     this.calculationResults = null;
-    this.api.calculateTask1(this.formCoefsObject(), this.user.currentUser.userId.toString()).subscribe((res) => {
+    this.api.calculateTask1(this.formCoefsObject(), this.user.currentUser.userId, this.dateService.getCurrentDate()).subscribe((res) => {
         this.calculationResults = res;
     },
       (error) => this.alert.handleError(error.error)
     );
 
+  }
+
+  calculateChart(): void {
     this.api.calculateTemperatureChartTask1(
       this.calculationForm.get('T1').value,
       this.calculationForm.get('T2').value,
@@ -80,7 +97,7 @@ export class CalculationTask1Component implements OnInit {
       this.calculationForm.get('G2').value,
     ).subscribe(
       res => this.chartCalculationResults = res,
-        error => this.alert.handleError(error.error)
+      error => this.alert.handleError(error.error)
     );
   }
 

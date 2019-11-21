@@ -20,6 +20,10 @@
                  (click)="tabChanged(headerTabsEnum.UserHistory)">История расчетов</div>
             <div class="header-container__general-info__tabs--item"
                  *ngIf="userService.isAdmin()"
+                 [class.header-container__general-info__tabs--item__active]="isTabActive(headerTabsEnum.AdminHistory)"
+                 (click)="tabChanged(headerTabsEnum.AdminHistory)">История расчетов всех пользователей</div>
+            <div class="header-container__general-info__tabs--item"
+                 *ngIf="userService.isAdmin()"
                  [class.header-container__general-info__tabs--item__active]="isTabActive(headerTabsEnum.Admin)"
                  (click)="tabChanged(headerTabsEnum.Admin)">Админ</div>
         </div>

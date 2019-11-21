@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { HistoryInterface } from '../../../interfaces/history.interface';
+import { HistoryInfoInterface } from '../../../interfaces/history.interface';
 import { TaskTypeEnum } from '../../../enums/task-type.enum';
 
 @Component({
@@ -8,7 +8,7 @@ import { TaskTypeEnum } from '../../../enums/task-type.enum';
   styleUrls: ['./history-card.component.sass']
 })
 export class HistoryCardComponent implements OnInit {
-  @Input() historyInfo: HistoryInterface;
+  @Input() historyInfo: HistoryInfoInterface;
   taskType = TaskTypeEnum;
   constructor() { }
 
@@ -16,9 +16,8 @@ export class HistoryCardComponent implements OnInit {
   }
 
   getTaskTypeDescription(): string {
-    return this.historyInfo.taskType === TaskTypeEnum.ScruberParams
+    return +this.historyInfo.calculationCoefficients.taskNum === TaskTypeEnum.ScruberParams
       ? 'Расчет параметров водонагревателя'
       : 'Расчет высоты насадки скрубера';
   }
-
 }

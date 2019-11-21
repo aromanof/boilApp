@@ -54,16 +54,7 @@
                placeholder="Конечная температура воды">
       </mat-form-field>
     </div>
-
-    <div class="actions-block">
-      <button mat-raised-button
-              class="text-uppercase calculate-button"
-              color="primary"
-              [disabled]="calculationForm.invalid"
-              (click)="calculate()">Расчитать
-      </button>
-    </div>
-  </form>  
+  </form>
 
   <div class="results">
     <app-calculation-results [calculationResults]="task3CalculationResults" [taskType]="taskTypeEnum.NozzleHeight"></app-calculation-results>

@@ -1,4 +1,4 @@
 export enum TaskTypeEnum {
-  ScruberParams,
-  NozzleHeight,
+  ScruberParams = 1,
+  NozzleHeight = 3,
 }

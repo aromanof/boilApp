@@ -3,6 +3,8 @@ import { CoefInterfaceTask1 } from '../../../interfaces/coefInterfaceTask1';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TaskTypeEnum } from '../../../enums/task-type.enum';
 import { Task1CalculationsInterface } from '../../../interfaces/calculations.interface';
+import { Router } from '@angular/router';
+import { HelperService } from '../../../services/helper.service';
 
 @Component({
   selector: 'app-task1-group',
@@ -14,7 +16,10 @@ export class Task1GroupComponent implements OnInit {
   @Input() task1CalculationResults: Task1CalculationsInterface;
   public calculationForm: FormGroup;
   taskTypeEnum = TaskTypeEnum;
-  constructor() { }
+  constructor(
+    private router: Router,
+    private helper: HelperService,
+  ) { }
 
   ngOnInit() {
     this.createCalculationForm(this.task1Coefficients);
@@ -31,4 +36,7 @@ export class Task1GroupComponent implements OnInit {
     })
   }
 
+  calculate() {
+    this.helper.navigateAndCalculateTask(TaskTypeEnum.ScruberParams, this.task1Coefficients, this.task1CalculationResults)
+  }
 }

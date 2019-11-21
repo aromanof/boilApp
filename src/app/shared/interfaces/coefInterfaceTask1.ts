@@ -1,5 +1,6 @@
 export interface CoefInterfaceTask1 {
   disableInput: boolean;
+  taskNum: string;
   G1: string;
   G2: string;
   T1: string;
@@ -11,6 +12,7 @@ export interface CoefInterfaceTask1 {
 
 export interface CoefInterfaceTask3 {
   disableInput: boolean;
+  taskNum: string;
   L: string;
   T1_1: string;
   T1_2: string;

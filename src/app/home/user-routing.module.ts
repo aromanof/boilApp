@@ -8,6 +8,7 @@ import { AdminGuard } from './admin/admin-guard.service';
 import { AdminComponent } from './admin/admin.component';
 import { MaterialsComponent } from './materials/materials.component';
 import { UserHistoryComponent } from './user-history/user-history.component';
+import { AdminHistoryComponent } from './admin-history/admin-history.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, children:
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'user-history',
         component: UserHistoryComponent,
+      },
+      {
+        path: 'admin-history',
+        component: AdminHistoryComponent,
       },
       {
         path: 'admin',

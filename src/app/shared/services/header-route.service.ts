@@ -8,4 +8,8 @@ import { HeaderTabsEnum } from '../enums/header-tabs.enum';
 export class HeaderRouteService {
   selectedTab = new BehaviorSubject<HeaderTabsEnum>(HeaderTabsEnum.Calculations);
   constructor() { }
+
+  selectNewTab(tab: HeaderTabsEnum) {
+    this.selectedTab.next(tab);
+  }
 }

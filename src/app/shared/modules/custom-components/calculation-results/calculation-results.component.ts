@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { TaskTypeEnum } from '../../../enums/task-type.enum';
 import { Task1CalculationsInterface, Task3CalculationsInterface } from '../../../interfaces/calculations.interface';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-calculation-results',

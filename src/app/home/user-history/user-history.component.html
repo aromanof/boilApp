@@ -1,7 +1,23 @@
 <div class="unit-conversion-label">
   <p>История расчетов</p>
 </div>
+<ng-container *ngIf="historyFetched; else loading">
+  <div class="history-container" *ngIf="(userHistory | async).history.length; else noData">
+    <app-history-card class="history-card" *ngFor="let historyItem of (userHistory | async).history" [historyInfo]="historyItem"></app-history-card>
+    <mat-paginator [length]="userHistory.getValue().documentsCount"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="getNextPage($event)">
+    </mat-paginator>
+  </div>
+</ng-container>
 
-<div class="history-container">
-  <app-history-card class="history-card" *ngFor="let historyItem of userHistory" [historyInfo]="historyItem"></app-history-card>
-</div>
+<ng-template #noData>
+  У данного пользователя пока нет истории рассчетов! Попробуйте на странице <a (click)="headerRouter.selectNewTab(tabsEnum.UserHistory)" class='link' routerLink="../calculations">"Рассчет"</a>
+</ng-template>
+
+<ng-template #loading>
+  <div class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

@@ -48,8 +48,8 @@ export class ApiService {
     return this.http.post<any>(this.serverHost + '/calculations/coefficients3', {}, this.httpOptions);
   }
 
-  public calculateTask1(coefs: CoefInterfaceTask1, userId: string): Observable<Task1CalculationsInterface> {
-    return this.http.post<any>(this.serverHost + '/calculations/calculate-task1', {coefs, userId}, this.httpOptions);
+  public calculateTask1(coefs: CoefInterfaceTask1, userId: string, date: string): Observable<Task1CalculationsInterface> {
+    return this.http.post<any>(this.serverHost + '/calculations/calculate-task1', {coefs, userId, date}, this.httpOptions);
   }
 
   public calculateTemperatureChartTask1(T1: number, T2: number, G1: number, G2: number): Observable<Task1TemperatureCalculationChartInterface> {
@@ -60,8 +60,8 @@ export class ApiService {
     return this.http.post<any>(this.serverHost + '/chart/task3-nozzle-surface', coefs, this.httpOptions);
   }
 
-  public calculateTask3(coefs: CoefInterfaceTask3, userId: string): Observable<Task3CalculationsInterface> {
-    return this.http.post<any>(this.serverHost + '/calculations/calculate-task3', {coefs, userId}, this.httpOptions);
+  public calculateTask3(coefs: CoefInterfaceTask3, userId: string, date: string): Observable<Task3CalculationsInterface> {
+    return this.http.post<any>(this.serverHost + '/calculations/calculate-task3', {coefs, userId, date}, this.httpOptions);
   }
 
   public updateDisabledValueTask1(isDisabled: boolean): Observable<Task3CalculationsInterface> {
@@ -80,49 +80,11 @@ export class ApiService {
     return this.http.post<any>(this.serverHost + '/admin/update-task3', coefs, this.httpOptions);
   }
 
-  public getUserHistory(): Observable<HistoryInterface[]> {
-    return of([{
-      userName: 'Alex',
-      date: '12-10-2019',
-      taskType: TaskTypeEnum.ScruberParams,
-      calculationCoefficients: {
-        disableInput: false,
-        G1: '100',
-        G2: '100',
-        T1: '100',
-        T2: '100',
-        Phi1: '100',
-        Phi2: '100',
-        Pb: '100',
-      },
-      calculationResults: {
-        dSm: 1,
-        iSm: 2,
-        phiSm: 3,
-        tSm: 4,
-      },
-    }, {
-      userName: 'Peter',
-      date: '10-11-2018',
-      taskType: TaskTypeEnum.NozzleHeight,
-      calculationCoefficients: {
-        disableInput: false,
-        L: '100',
-        T1_1: '100',
-        T1_2: '100',
-        T2_1: '100',
-        T2_2: '100',
-        I1: '100',
-        I2: '100',
-        S: '100',
-        V: '100',
-        d: '100',
-      },
-      calculationResults: {
-        skooberDiametr: 1,
-        nozzleVolume: 2,
-        nozzleHeight: 3,
-      },
-    }]);
+  public getUserHistory(userId: string, page: number, perPage: number): Observable<HistoryInterface> {
+    return this.http.post<any>(this.serverHost + '/history/user-history', {userId, page, perPage}, this.httpOptions);
+  }
+
+  public getAdminHistory(page: number, perPage: number): Observable<HistoryInterface> {
+    return this.http.post<any>(this.serverHost + '/history/admin-history', {page, perPage}, this.httpOptions);
   }
 }

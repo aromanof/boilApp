@@ -2,7 +2,7 @@
   <mat-expansion-panel-header>
     <mat-panel-title>
       <div class="history-title">
-        <span>User: {{historyInfo.userName}}</span>
+        <span>User: {{historyInfo.user.login}}</span>
         <span class="second-title">Date: {{historyInfo.date}}</span>
       </div>
     </mat-panel-title>
@@ -10,7 +10,7 @@
       Задача: {{getTaskTypeDescription()}}
     </mat-panel-description>
   </mat-expansion-panel-header>
-  <app-task1-group *ngIf="historyInfo.taskType === taskType.ScruberParams; else task3" [task1Coefficients]="historyInfo.calculationCoefficients" [task1CalculationResults]="historyInfo.calculationResults"></app-task1-group>
+  <app-task1-group *ngIf="+historyInfo.calculationCoefficients.taskNum === taskType.ScruberParams; else task3" [task1Coefficients]="historyInfo.calculationCoefficients" [task1CalculationResults]="historyInfo.calculationResults"></app-task1-group>
   <ng-template #task3>
     <app-task3-group [task3Coefficients]="historyInfo.calculationCoefficients" [task3CalculationResults]="historyInfo.calculationResults"></app-task3-group>
   </ng-template>

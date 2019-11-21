@@ -3,6 +3,8 @@ import { CoefInterfaceTask3 } from '../../../interfaces/coefInterfaceTask1';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Task3CalculationsInterface } from '../../../interfaces/calculations.interface';
 import { TaskTypeEnum } from '../../../enums/task-type.enum';
+import { NavigationExtras, Router } from '@angular/router';
+import { HelperService } from '../../../services/helper.service';
 
 @Component({
   selector: 'app-task3-group',
@@ -16,7 +18,10 @@ export class Task3GroupComponent implements OnInit {
 
   taskTypeEnum = TaskTypeEnum;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private helper: HelperService,
+  ) { }
 
   ngOnInit() {
     this.createCalculationForm(this.task3Coefficients);
@@ -35,5 +40,9 @@ export class Task3GroupComponent implements OnInit {
       V: new FormControl({ value: coefs.V, disabled: true }, Validators.required),
       d: new FormControl({ value: coefs.d, disabled: true }, Validators.required),
     });
+  }
+
+  calculate() {
+    this.helper.navigateAndCalculateTask(TaskTypeEnum.NozzleHeight, this.task3Coefficients, this.task3CalculationResults)
   }
 }
