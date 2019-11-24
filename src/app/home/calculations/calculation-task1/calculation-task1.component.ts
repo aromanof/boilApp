@@ -86,7 +86,7 @@ export class CalculationTask1Component implements OnInit {
     },
       (error) => this.alert.handleError(error.error)
     );
-
+    this.calculateChart();
   }
 
   calculateChart(): void {
