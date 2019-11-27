@@ -5,6 +5,7 @@ export interface Task1TemperatureCalculationChartInterface {
 }
 
 export interface Task3NozzleHeightCalculationChartInterface {
-  sChangingList: Array<string>,
-  resultNozzleHeightList: Array<number>,
+  sChangingList: Array<string>;
+  vChangingList: Array<string>;
+  resultNozzleHeightList: Array<number>;
 }

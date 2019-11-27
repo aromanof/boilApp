@@ -1,7 +1,8 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { ChartDataSets, ChartOptions } from 'chart.js';
+import { Component, Input, OnInit } from '@angular/core';
+import {ChartDataSets, ChartType} from 'chart.js';
 import { Subject } from 'rxjs';
-import { Color, Label } from 'ng2-charts';
+import { Label } from 'ng2-charts';
+import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { filter } from 'rxjs/operators';
 import {
   Task1TemperatureCalculationChartInterface,
@@ -19,20 +20,30 @@ export class CalculationChartComponent implements OnInit {
   @Input() tabChanged: Subject<any>;
   @Input() calculationsResults: Task1TemperatureCalculationChartInterface | Task3NozzleHeightCalculationChartInterface;
   @Input() taskType: TaskTypeEnum;
-  public lineChartData: ChartDataSets[];
-  public lineChartLabels: Label[];
-  public lineChartOptions = {
+  public barChartOptions = {
     responsive: true,
+    scales: { xAxes: [{}], yAxes: [{
+        ticks: {
+          beginAtZero: true,
+        }
+      }] },
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+      }
+    }
   };
-  public lineChartColors: Color[] = [
-    {
-      borderColor: 'black',
-      backgroundColor: 'rgba(255,0,0,0.3)',
-    },
+  public barChartLabels: Label[] = [];
+  public barChartType: ChartType = 'bar';
+  public barChartLegend = true;
+  public barChartPlugins = [pluginDataLabels];
+
+  public barChartData: ChartDataSets[] = [
+    { type: 'bar', data: [], label: 'Начальная температура' },
+    { type: 'bar', data: [], label: 'Конечная температура' },
+    { borderWidth: 3, pointBorderWidth: 4, fill: false, type: 'line', data: [], label: 'Температура смеси' },
   ];
-  public lineChartLegend = true;
-  public lineChartType = 'line';
-  public lineChartPlugins = [];
 
   constructor() {}
 
@@ -41,17 +52,24 @@ export class CalculationChartComponent implements OnInit {
       filter(() => !!this.calculationsResults),
     ).subscribe(() => {
       if (this.taskType === TaskTypeEnum.ScruberParams) {
+        this.barChartLabels = ['T1 + 10, T2', 'T1 + 5, T2', 'T1, T2', 'T1, T2 + 5', 'T1, T2 + 10'];
         // @ts-ignore
-        this.lineChartData = [{data: this.calculationsResults.startTemperatureList, label: 'Начальная температура'}, {data: this.calculationsResults.endTemperatureList, label: 'Конечная температура'}];
+        this.barChartData[0].data = this.calculationsResults.startTemperatureList;
+        this.barChartData[0].label = 'Начальная температура';
         // @ts-ignore
-        this.lineChartLabels = this.calculationsResults.resultTemperatureList;
+        this.barChartData[1].data = this.calculationsResults.endTemperatureList;
+        this.barChartData[1].label = 'Конечная температура';
+        // @ts-ignore
+        this.barChartData[2] = { data: this.calculationsResults.resultTemperatureList, borderWidth: 3, pointBorderWidth: 4, fill: false, type: 'line', label: 'Температура смеси' };
       } else if (this.taskType === TaskTypeEnum.NozzleHeight) {
+        this.barChartLabels = ['S + 10, V', 'S + 5, V', 'S, V', 'S, V + 0.2', 'S, V + 0.5'];
         // @ts-ignore
-        this.lineChartData = [{data: this.calculationsResults.resultNozzleHeightList, label: 'Высота хордовой насадки'}];
+        this.barChartData[0] = {data: this.calculationsResults.vChangingList, label: 'Свободный объем насадки'};
         // @ts-ignore
-        this.lineChartLabels = this.calculationsResults.sChangingList;
+        this.barChartData[1] = {data: this.calculationsResults.sChangingList, label: 'Поверхность насадки'};
+        // @ts-ignore
+        this.barChartData[2] = {data: this.calculationsResults.resultNozzleHeightList, borderWidth: 3, pointBorderWidth: 4, fill: false, type: 'line', label: 'Высота насадки'};
       }
     });
   }
-
 }

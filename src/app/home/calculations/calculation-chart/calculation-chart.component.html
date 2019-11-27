@@ -1,12 +1,11 @@
 <div class="chart-container" *ngIf="calculationsResults && (tabChanged | async); else calculateFirst">
   <canvas baseChart width="400" height="400"
-          [datasets]="lineChartData"
-          [labels]="lineChartLabels"
-          [options]="lineChartOptions"
-          [colors]="lineChartColors"
-          [legend]="lineChartLegend"
-          [chartType]="lineChartType"
-          [plugins]="lineChartPlugins">
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [legend]="barChartLegend"
+          [chartType]="barChartType"
+          [plugins]="barChartPlugins">
   </canvas>
   <span>{{xAxisLabel}}</span>
 </div>
