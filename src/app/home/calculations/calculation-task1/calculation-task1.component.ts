@@ -83,7 +83,7 @@ export class CalculationTask1Component implements OnInit {
     this.calculationResults = null;
     this.api.calculateTask1(this.formCoefsObject(), this.user.currentUser.userId, this.dateService.getCurrentDate()).subscribe((res) => {
         this.calculationResults = res;
-    },
+      },
       (error) => this.alert.handleError(error.error)
     );
     this.calculateChart();
@@ -95,6 +95,8 @@ export class CalculationTask1Component implements OnInit {
       this.calculationForm.get('T2').value,
       this.calculationForm.get('G1').value,
       this.calculationForm.get('G2').value,
+      this.calculationForm.get('Phi1').value,
+      this.calculationForm.get('Phi2').value,
     ).subscribe(
       res => this.chartCalculationResults = res,
       error => this.alert.handleError(error.error)
@@ -106,6 +108,7 @@ export class CalculationTask1Component implements OnInit {
     Object.keys(this.calculationForm.controls).forEach(key => {
       coefsObject[key] = this.calculationForm.get(key).value;
     });
+    console.log(coefsObject);
     return coefsObject;
   }
 

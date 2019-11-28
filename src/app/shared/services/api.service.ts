@@ -52,8 +52,8 @@ export class ApiService {
     return this.http.post<any>(this.serverHost + '/calculations/calculate-task1', {coefs, userId, date}, this.httpOptions);
   }
 
-  public calculateTemperatureChartTask1(T1: number, T2: number, G1: number, G2: number): Observable<Task1TemperatureCalculationChartInterface> {
-    return this.http.post<any>(this.serverHost + '/chart/task1-temperature', {T1, T2, G1, G2}, this.httpOptions);
+  public calculateTemperatureChartTask1(T1: number, T2: number, G1: number, G2: number, Phi1: number, Phi2: number): Observable<Task1TemperatureCalculationChartInterface> {
+    return this.http.post<any>(this.serverHost + '/chart/task1-temperature', {T1, T2, G1, G2, Phi1, Phi2}, this.httpOptions);
   }
 
   public calculateNozzleSurfaceChartTask3(coefs: CoefInterfaceTask3): Observable<Task3NozzleHeightCalculationChartInterface> {

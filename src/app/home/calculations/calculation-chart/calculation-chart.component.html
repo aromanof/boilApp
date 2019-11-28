@@ -1,4 +1,11 @@
 <div class="chart-container" *ngIf="calculationsResults && (tabChanged | async); else calculateFirst">
+  <mat-form-field class="data-type-selector" *ngIf="taskType === taskTypeEnum.ScruberParams">
+    <mat-label>Выберите данные для расчета</mat-label>
+    <mat-select [formControl]="chart1DataType">
+      <mat-option [value]="chart1DataTypeEnum.Temperature">Temperature</mat-option>
+      <mat-option [value]="chart1DataTypeEnum.Humidity">Humidity</mat-option>
+    </mat-select>
+  </mat-form-field>
   <canvas baseChart width="400" height="400"
           [datasets]="barChartData"
           [labels]="barChartLabels"
@@ -7,7 +14,6 @@
           [chartType]="barChartType"
           [plugins]="barChartPlugins">
   </canvas>
-  <span>{{xAxisLabel}}</span>
 </div>
 
 <ng-template #calculateFirst>
