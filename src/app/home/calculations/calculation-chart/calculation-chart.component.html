@@ -1,5 +1,5 @@
 <div class="chart-container" *ngIf="calculationsResults && (tabChanged | async); else calculateFirst">
-  <mat-form-field class="data-type-selector" *ngIf="taskType === taskTypeEnum.ScruberParams">
+  <mat-form-field class="data-type-selector" *ngIf="taskType === taskTypeEnum.ScruberParams; else nozzleSelect">
     <mat-label>Выберите данные для расчета</mat-label>
     <mat-select [formControl]="chart1DataType">
       <mat-option [value]="chart1DataTypeEnum.Temperature">Temperature</mat-option>
@@ -18,5 +18,15 @@
 
 <ng-template #calculateFirst>
   <p class="no-chart-label">Расчитайте данные, чтобы увидеть график!</p>
+</ng-template>
+
+<ng-template #nozzleSelect>
+  <mat-form-field class="data-type-selector">
+    <mat-label>Выберите данные для расчета</mat-label>
+    <mat-select [formControl]="chart2DataType">
+      <mat-option [value]="chart2DataTypeEnum.Temperature">Temperature</mat-option>
+      <mat-option [value]="chart2DataTypeEnum.VolumeSurface">Humidity</mat-option>
+    </mat-select>
+  </mat-form-field>
 </ng-template>
 

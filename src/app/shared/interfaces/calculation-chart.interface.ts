@@ -4,14 +4,13 @@ export interface Task1TemperatureCalculationChartInterface {
 }
 
 export interface Task3NozzleHeightCalculationChartInterface {
-  sChangingList: Array<string>;
-  vChangingList: Array<string>;
-  resultNozzleHeightList: Array<number>;
+  T: Task1ChartItemResults;
+  SV: Task1ChartItemResults
 }
 
 export interface Task1ChartItemResults {
-  startList: Array<number>,
-  endList: Array<number>,
-  resultTemperatureList: Array<string>,
-  labels: Array<string>,
+  startList: Array<number>;
+  endList: Array<number>;
+  resultTemperatureList: Array<string>;
+  labels: Array<string>;
 }
